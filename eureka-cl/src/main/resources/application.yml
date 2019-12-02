@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://eureka.server:8801/eureka/,http://eureka.server.assistant:8802/eureka/  #注册的url,  多个使用英文逗号做分隔
+
+spring:
+  application:
+    name: eureka-cl

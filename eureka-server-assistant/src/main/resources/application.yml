@@ -1,0 +1,19 @@
+#在默认设置下，Eureka服务注册中心也会将自己作为客户端来尝试注册它自己，所以我们需要禁用它的客户端注册行为。
+server:
+  port: 8802 #服务注册中心端口号
+
+eureka:
+  server:
+    enable-self-preservation: false  #本机测试下关闭自我保护机制
+  instance:
+    hostname: eureka.server.assistant #服务注册中心实例的主机名
+  client:
+    register-with-eureka: false #是否向服务注册中心注册自己
+    fetch-registry: false #是否检索服务
+    service-url:
+      #向eureka-server进行注册,所以是2的端口
+      defaultZone: http://eureka.server:8801/eureka/  #服务注册中心的配置内容，指定服务注册中心的位置
+
+spring:
+  application:
+    name: eureka-server

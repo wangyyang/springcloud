@@ -1,0 +1,19 @@
+server:
+  port: 8091
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka.server:8801/eureka/,http://eureka.server.assistant:8802/eureka/
+
+spring:
+  application:
+    name: y-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #启用服务实例id名称小写支持
+          lower-case-service-id: true #启用服务实例id名称小写支持

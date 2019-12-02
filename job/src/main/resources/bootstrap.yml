@@ -1,0 +1,38 @@
+server:
+  port: 8090
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka.server:8801/eureka/,http://eureka.server.assistant:8802/eureka/
+
+spring:
+  application:
+    name: job-service
+  profiles:
+    active: dev
+---
+#开发环境
+spring:
+  profiles: dev
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8000
+      fail-fast: true
+      profile: dev   #配置文件命名必须-xxx
+      label: master
+      name: default-dev,jdbc-dev
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8000
+      fail-fast: true
+      profile: prod   #配置文件命名必须-xxx
+      label: master
+      name: default-prod,jdbc-prod
